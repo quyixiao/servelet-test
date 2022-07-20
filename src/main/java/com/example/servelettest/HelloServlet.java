@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 
 public class HelloServlet extends HttpServlet {
@@ -17,6 +18,9 @@ public class HelloServlet extends HttpServlet {
         super.doGet(req,resp);
         System.out.println("doGet方法执行");
 
+        int i = 0 ;
+        int j = 0;
+        int c = i / j ;
         resp.getWriter().append("xxxxxx");
     }
 

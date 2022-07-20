@@ -9,7 +9,7 @@ public class Test {
     public static final int DEFULT_TIMEOUT = 1000000 * 1000;
 
     public static void main(String[] args) {
-        String url = "http://localhost:8080/servelet-test-1.0/MyServlet";
+        String url = "http://localhost:8080/servelet-test-1.0/MyServlet%E4%B8%AD";
         String param = "xx";
         System.out.println("doHttpPost begin url = " + url + " param = " + param);
         BufferedReader in = null;
