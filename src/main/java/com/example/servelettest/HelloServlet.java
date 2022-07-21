@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-@WebServlet( asyncSupported = true)
+// @WebServlet( asyncSupported = true)
 public class HelloServlet extends HttpServlet {
 
 

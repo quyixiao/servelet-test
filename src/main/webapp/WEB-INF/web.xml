@@ -8,6 +8,7 @@
     <servlet>
         <servlet-name>my</servlet-name>
         <servlet-class>com.example.servelettest.HelloServlet</servlet-class>
+        <async-supported>true</async-supported>
     </servlet>
 
     <servlet-mapping>
