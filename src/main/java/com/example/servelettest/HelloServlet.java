@@ -32,12 +32,14 @@ public class HelloServlet extends HttpServlet {
 
         try {
 
+/*
 
             Context initCtx = new InitialContext();
             Context envCtx = (Context)initCtx.lookup("java:comp/env");
             String paramValue = (String)envCtx.lookup("sql_type");
+*/
 
-            System.out.println("paramValue============================" + paramValue);
+         //   System.out.println("paramValue============================" + paramValue);
 
 
             System.out.println("开始请求============================");
