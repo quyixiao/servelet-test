@@ -3,9 +3,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee"
          version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee">
 
-
-
-
     <servlet>
         <servlet-name>my</servlet-name>
         <servlet-class>com.example.servelettest.HelloServlet</servlet-class>
@@ -15,8 +12,6 @@
         <servlet-name>my</servlet-name>
         <url-pattern>/MyServlet</url-pattern>
     </servlet-mapping>
-
-
 
 
     <env-entry>
@@ -34,3 +29,7 @@
     </ejb-local-ref>
 
 </web-app>
+
+
+
+

@@ -11,16 +11,26 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.naming.spi.NamingManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+//Hashtable<String,String> env = new Hashtable<>();
+//env.put("java.naming.factory.initial", "com.example.servelettest.MyInitialContextFactoryBuilder");
+         /*   Context initCtx = new InitialContext(env);
+            Context envCtx = (Context)initCtx.lookup("java:comp/env");
+            String paramValue = (String)envCtx.lookup("sql_type");*/
+
 public class HelloServlet extends HttpServlet {
+    public static boolean flag = true;
+
     public HelloServlet() {
     }
 
@@ -29,21 +39,20 @@ public class HelloServlet extends HttpServlet {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
-
         try {
-
-
-            Context initCtx = new InitialContext();
-            Context envCtx = (Context)initCtx.lookup("java:comp/env");
-            String paramValue = (String)envCtx.lookup("sql_type");
-
-            System.out.println("paramValue============================" + paramValue);
-
-
+            //System.out.println("paramValue============================" + paramValue);
             System.out.println("开始请求============================");
+            if(flag){
+                // 因为 initctx_factory_builder是静态变量，设置一次即可
+                System.out.println("设置 InitialContextFactoryBuilder =========");
+                NamingManager.setInitialContextFactoryBuilder(new MyInitialContextFactoryBuilder());
+                flag = false;
+            }
+            System.out.println("====================初始化InitialContext ===========");
             ctx = new InitialContext();
+            System.out.println("--------------------------开始调用lookup查询------------ ");
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mysql");
-            System.out.println("bbb============================" + ds);
+            System.out.println("打印出ds============================" + ds);
             con = ds.getConnection();
             System.out.println("==con=====" + con);
             stmt = con.createStatement();
@@ -98,4 +107,8 @@ public class HelloServlet extends HttpServlet {
         System.out.println("doGet方法执行");
         this.doGet(req, resp);
     }
+
 }
+
+
+
