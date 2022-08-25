@@ -263,3 +263,4 @@ build
 */tmp/**.html
 
 /log
+.git

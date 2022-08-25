@@ -26,7 +26,18 @@ import javax.sql.DataSource;
 //env.put("java.naming.factory.initial", "com.example.servelettest.MyInitialContextFactoryBuilder");
          /*   Context initCtx = new InitialContext(env);
             Context envCtx = (Context)initCtx.lookup("java:comp/env");
-            String paramValue = (String)envCtx.lookup("sql_type");*/
+            String paramValue = (String)envCtx.lookup("sql_type");
+
+            //System.out.println("paramValue============================" + paramValue);
+            System.out.println("开始请求============================");
+            if(flag){
+                // 因为 initctx_factory_builder是静态变量，设置一次即可
+                System.out.println("设置 InitialContextFactoryBuilder =========");
+                NamingManager.setInitialContextFactoryBuilder(new MyInitialContextFactoryBuilder());
+                flag = false;
+            }
+
+            */
 
 public class HelloServlet extends HttpServlet {
     public static boolean flag = true;
@@ -40,17 +51,10 @@ public class HelloServlet extends HttpServlet {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            //System.out.println("paramValue============================" + paramValue);
-            System.out.println("开始请求============================");
-            if(flag){
-                // 因为 initctx_factory_builder是静态变量，设置一次即可
-                System.out.println("设置 InitialContextFactoryBuilder =========");
-                NamingManager.setInitialContextFactoryBuilder(new MyInitialContextFactoryBuilder());
-                flag = false;
-            }
             System.out.println("====================初始化InitialContext ===========");
             ctx = new InitialContext();
             System.out.println("--------------------------开始调用lookup查询------------ ");
+            // DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mysql");
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mysql");
             System.out.println("打印出ds============================" + ds);
             con = ds.getConnection();
