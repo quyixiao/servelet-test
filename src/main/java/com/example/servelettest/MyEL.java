@@ -10,17 +10,11 @@ package com.example.servelettest;//自定义函数
 
 //再将函数注册，还是在jsp2-example-taglib.tld底部中复制
 public class MyEL {
-    private static MyEL instance;
-
-    public static MyEL getInstance() {
-        if (instance == null) {
-            instance = new MyEL();
-        }
-        return instance;
-    }
 
     //字符串小写变大写
-    public static String LowerToUpper(String str) {
-        return str.toUpperCase();
+    public static TestDto getTestDto() {
+        return new TestDto();
     }
+
+
 }

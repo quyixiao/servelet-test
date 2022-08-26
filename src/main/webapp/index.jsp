@@ -8,21 +8,8 @@
       <title>Insert title here</title>
 </head>
 <body>
-<!-- 这个方法名是在tld注册时的name -->
-${MyEL:MyLowerToUpper("sasas") }<br>
 
-
-<!-- EL函数只能处理四大域中的属性值及String常量 -->
-<%
-      String name="xlj";
-      pageContext.setAttribute("name", name);
-%>
-
-
-
-${MyEL:MyLowerToUpper(name) }<br>
+${MyEL:getTestDto().getMyUsername("小明") }<br>
 
 </body>
 </html>
-
-

@@ -1,20 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: quyixiao
-  Date: 2022/5/22
-  Time: 11:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.*,javax.sql.*,javax.naming.*" %>
-<%@ page import="com.example.servelettest.Person" %>
-<%-- 我在测试 --%>
-<%
-      Person person =new Person();
-      person.setName("帅哥");
-      person.setHeight(167);
-      person.setAge(20);
-      request.setAttribute("person", person);
-%>
-名字 ： ${person.name} <br>
-人身高 ： ${person.height}
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tomcat.apache.org/jsp2-example-taglib" prefix="MyEL" %><!-- tld中的uri和short-name -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Insert title here</title>
+</head>
+<body>
+
+${MyEL:getTestDto().getMyUsername("小明") }<br>
+
+</body>
+</html>
